@@ -26,37 +26,7 @@
 
 % you can put environments like itemize, lemmaX, etc. inside the proofX environments! how cool
 
-% here's what your preamble should look like :)
-
-\documentclass[10pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage{prime}
-
-\backgroundsetup{
-scale=1,
-color=black,
-opacity=0.4,
-angle=0,
-contents={%
-  \includegraphics[width=\paperwidth,height=\paperheight]{bk7.png} 
-  }%
-}
-
-\author{}
-\title{}
-\date{}
-\begin{document}
-\maketitle
-\BgThispage
-\begin{flushleft}
-
-\toc
-\newpage
-
-%main document begins
-
-\end{flushleft}
-\end{document}
+% as a helpful nudge, i have provided a starter tex file in this repository under the name "starter.tex"
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
