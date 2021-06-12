@@ -5,19 +5,15 @@
 %%%%%  you need everything in this folder to be  %%%%%
 %%%%%  in your directory if you want to use the  %%%%%
 %%%%% style file (besides the readme, of course) %%%%%
-%%%%%                                            %%%%%
-%%%%%  i will consider adding other environments %%%%%
-%%%%%  such as theorem, etc. as of yet the style %%%%%
-%%%%%   file is for personal use so problem and  %%%%%
-%%%%%     solution environments will suffice     %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % some stuff you can use: 
+% NOTE: BASICALLY EVERY ENVIRONMENT HAS ITS OWN COLOR! PLEASE CHECK THEM ALL OUT :D :D 
 
 \prob{Source}{Problem}
 
-\begin{question}{(source)} % must use parentheses around the source!
+\begin{question}{(source)} % must use parentheses around the source! also replace question with theorem and definition. 
 % Problem
 \end{question}
 
