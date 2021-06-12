@@ -1,4 +1,3 @@
-%credits to dennis chen, who basically created this sty (with modifications by myself) and you can probably tell by visual similarities :)
 %will consider adding other environments such as theorem, etc. as of yet the style file is for personal use so problem and solution environments will suffice
 %some stuff you can use: 
 
@@ -16,5 +15,7 @@
 
 
 % you can put environments like itemize, lemmaX, etc. inside the proofX environments! how cool
+% some credits to dennis chen, who basically created this sty (with modifications by myself) and you can probably tell by visual similarities :)
+
 
 % by the way, i dont really know what im doing :) 
