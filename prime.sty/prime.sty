@@ -1,0 +1,410 @@
+% names package
+\ProvidesPackage{prime}
+
+\ProcessOptions\relax
+
+
+% asy stuffs
+\RequirePackage{asymptote}
+\begin{asydef}
+import olympiad;
+import cse5;
+import geometry;
+\end{asydef}
+
+
+% colors, needed for pts and title
+
+\RequirePackage{xcolor}
+
+
+\definecolor{darkmidnightblue}{rgb}{0.57,0.0,0.04}
+\definecolor{sangria}{rgb}{0.0, 0.2, 0.4}
+\definecolor{persianblue}{RGB}{128, 0, 0}
+
+
+\definecolor{titlered}{RGB}{128, 0.0, 0.0}
+
+\definecolor{thmblue}{rgb}{0.88, 0.95, 0.98}
+\definecolor{darkblue}{RGB}{36,57,108}
+
+
+\definecolor{lightred}{RGB}{255, 250, 250} 
+\definecolor{darkred}{RGB}{143, 36, 29} 
+
+\definecolor{lightorange}{RGB}{255, 253, 247} 
+\definecolor{darkorange}{RGB}{181, 135, 47} 
+
+\definecolor{lightgreen}{RGB}{247, 255, 248} 
+\definecolor{darkgreen}{RGB}{18, 110, 39} 
+
+\definecolor{lightcyan}{RGB}{245, 252, 255}
+\definecolor{darkcyan}{RGB}{50, 88, 135}
+
+\definecolor{lightpurple}{RGB}{247, 247, 255}
+\definecolor{darkpurple}{RGB}{45,0,90} 
+
+\definecolor{lightgray}{RGB}{237, 237, 237}
+\definecolor{darkgray}{RGB}{36, 36, 36} 
+
+
+
+\RequirePackage{fontawesome}
+
+
+
+\newcounter{problem}\setcounter{problem}{0} % Problem number counter
+
+\newcommand{\prob}[3]{
+{\parindent=0pt
+\stepcounter{problem}{\color{darkmidnightblue}[#1\,\faPencil]} \textbf{Problem \theproblem}{\if\relax\detokenize{#2}\relax\else\hspace{3pt}(#2)\fi}{\hspace{3.5pt}#3}}
+\vspace{0.2cm}
+}
+\newcommand{\req}[3]{
+{\parindent=0pt
+\stepcounter{problem} \textbf{{\color{sangria}Problem \theproblem}}{\textbf{{\color{sangria}\if\relax\detokenize{#2}\relax\else\hspace{3.5pt}(#1)\fi}}}{\hspace{3pt}#2}}
+\vspace{0.2cm}
+}
+% advances counter, takes in point value and problem statement as inputs
+% faPencil is kind of a big symbol
+
+
+
+\usepackage{soul}
+
+
+\RequirePackage[letterpaper,top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,includeheadfoot]{geometry} % geometry has to be BEFORE fancyhdr for margins to work!
+
+\RequirePackage{etoolbox} % needed for hints and also title
+
+
+\patchcmd{\@maketitle}{\@title}{\sffamily\color{sangria}\bfseries\@title{}}{}{}
+\patchcmd{\@maketitle}{\@author}{\sffamily\@author}{}{}
+\patchcmd{\@maketitle}{\@date}{\sffamily\color{persianblue}{\@date}}{}{}
+
+
+% font formatting
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{pifont}
+\RequirePackage[T1]{fontenc}
+
+\input{fonts}
+
+% more generic formatitng
+
+\RequirePackage{amsmath,amsthm,amssymb}
+\RequirePackage{comment}
+\RequirePackage{mathrsfs}
+\RequirePackage{graphicx}
+\RequirePackage{pdfpages}
+\RequirePackage{enumitem}
+\RequirePackage{changepage}
+
+\raggedbottom
+
+% hyperref
+
+\usepackage[hypertexnames=false]{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=darkmidnightblue,
+    urlcolor=darkmidnightblue
+}
+
+% toc looks bad with hyperref
+
+\newcommand{\toc}{
+{\hypersetup{
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=black}
+\tableofcontents}
+}
+
+
+
+% theorem styles
+
+\newtheoremstyle{theorem}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{darkblue}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {1.5mm}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\newtheoremstyle{def}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{darkgreen}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {1.5mm}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\newtheoremstyle{example}%                % Name
+  {0pt}%                                     % Space above
+  {2pt}%                                     % Space below
+  {}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{darkred}\sffamily\bfseries}%                            % Theorem head font
+  {}%                                    % Punctuation after theorem head
+  {1.5mm}%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%
+
+\newtheoremstyle{proof}
+{0pt}
+{0pt}
+{}
+{}
+{\color{darkpurple}\sffamily\bfseries}
+{:}
+{1.5mm}
+{\thmname{#1}\thmnote{ #3}}
+
+%\newtheoremstyle{remark}
+%{0pt}
+%{0pt}
+%{}
+%{}
+%{\color{black}\sffamily\bfseries}
+%{:}
+%{1.5mm}
+%{\thmname{#1}\thmnote{ #3}}
+
+\newtheoremstyle{solution}
+{0pt}
+{0pt}
+{}
+{}
+{\color{darkmidnightblue}\sffamily\bfseries}
+{:}
+{1.5mm}
+{\thmname{#1}\thmnote{ #3}}
+
+% theorems
+
+\RequirePackage{mdframed}
+
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins}
+\tcbuselibrary{breakable}
+\tcbuselibrary{theorems}
+
+\RequirePackage{titlesec}
+
+%titling & sectioning from team.sty
+
+\newcommand{\sectioncolor}{sangria} % in case I need to change this for any reason
+
+\titleformat{\section}{\normalfont\Large\bfseries\sffamily}{\color{\sectioncolor}{\S\,\thesection}}{1em}{\color{\sectioncolor}}[\color{\sectioncolor}\rule{\linewidth}{0.6mm}]
+\titleformat{\subsection}{\normalfont\large\bfseries\sffamily}{\color{\sectioncolor}{\S\,\thesubsection}}{1em}{\color{\sectioncolor}}[\color{\sectioncolor}]
+\titleformat{\subsubsection}{\normalfont\bfseries\sffamily}{\color{\sectioncolor}{\S\,\thesubsubsection}}{1em}{\color{\sectioncolor}}[\color{\sectioncolor}]
+
+
+\theoremstyle{proof} %problem solution and remark environment (self explanatory)
+
+\newmdtheoremenv[
+backgroundcolor=lightpurple,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkpurple,
+linewidth=2pt,
+topline=true,
+bottomline=false,
+rightline=false,
+leftline=true]{question}{Problem}
+
+
+\newmdtheoremenv[
+backgroundcolor=lightred,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkred,
+linewidth=2pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=true]{proofA}{Solution}
+
+\newmdtheoremenv[
+backgroundcolor=lightorange,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkorange,
+linewidth=2pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=true]{proofC}{Solution}
+
+\newmdtheoremenv[
+backgroundcolor=lightgreen,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkgreen,
+linewidth=2pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=true]{proofG}{Solution}
+
+\newmdtheoremenv[
+backgroundcolor=lightcyan,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkcyan,
+linewidth=2pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=true]{proofN}{Solution}
+
+\newmdtheoremenv[
+backgroundcolor=lightred,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkred,
+linewidth=1pt,
+topline=true,
+bottomline=true,
+rightline=true,
+leftline=true]{lemmaA}{Lemma}
+
+\newmdtheoremenv[
+backgroundcolor=lightorange,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkorange,
+linewidth=1pt,
+topline=true,
+bottomline=true,
+rightline=true,
+leftline=true]{lemmaC}{Lemma}
+
+\newmdtheoremenv[
+backgroundcolor=lightgreen,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkgreen,
+linewidth=1pt,
+topline=true,
+bottomline=true,
+rightline=true,
+leftline=true]{lemmaG}{Lemma}
+
+\newmdtheoremenv[
+backgroundcolor=lightcyan,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkcyan,
+linewidth=1pt,
+topline=true,
+bottomline=true,
+rightline=true,
+leftline=true]{lemmaN}{Lemma}
+
+\newmdtheoremenv[
+backgroundcolor=lightred,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkred,
+linewidth=1pt,
+topline=true,
+bottomline=true,
+rightline=true,
+leftline=true]{claimA}{Claim}
+
+\newmdtheoremenv[
+backgroundcolor=lightorange,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkorange,
+linewidth=1pt,
+topline=true,
+bottomline=true,
+rightline=true,
+leftline=true]{claimC}{Claim}
+
+\newmdtheoremenv[
+backgroundcolor=lightgreen,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkgreen,
+linewidth=1pt,
+topline=true,
+bottomline=true,
+rightline=true,
+leftline=true]{claimG}{Claim}
+
+\newmdtheoremenv[
+backgroundcolor=lightcyan,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkcyan,
+linewidth=1pt,
+topline=true,
+bottomline=true,
+rightline=true,
+leftline=true]{claimN}{Claim}
+
+\newmdtheoremenv[
+backgroundcolor=lightgray,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkgray,
+linewidth=2pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=true]{note}{Comment}
+
+
+
+\def\endlem{\hfill$\square$}
+\def\endpro{\hfill$\blacksquare$}
+
+\newcommand*{\Item}{\item[\ding{70}]} %item command for itemize env
+
+\newcommand{\rbold}[1]{{\color{sangria}\bfseries#1}} %reddish bold color
+\newcommand{\bbold}[1]{{\color{persianblue}\bfseries#1}} %blueish bold color
+
+\usepackage{bm}
+\newcommand{\ansbold}[1]{{\color{darkmidnightblue}\bm{#1}}} %ansbold
+
+\usepackage[pages=all]{background} %background (optional); setup in preamble of tex document
