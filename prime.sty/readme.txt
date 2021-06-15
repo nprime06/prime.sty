@@ -24,8 +24,7 @@
 % end lemma with \endlem for empty square and end proof with \endpro or \endsol for blacksquare at the end of line
 
 
-% you can put environments like itemize, lemmaX, etc. inside the proofX environments! how cool
-
+% you can stack environments, as usual! how cool
 % as a helpful nudge, i have provided a starter tex file in this repository under the name "starter.tex"
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
