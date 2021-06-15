@@ -60,16 +60,6 @@ import geometry;
 
 \RequirePackage{fontawesome}
 
-
-
-\newcounter{problem}\setcounter{problem}{0} % Problem number counter
-
-\newcommand{\prob}[3]{ % problem
-{\parindent=0pt
-\stepcounter{problem}\textbf{Problem \theproblem}{\if\relax\detokenize{#2}\relax\else\hspace{3pt}(#1)\fi}{\hspace{3.5pt}#2}}
-\vspace{0.2cm}
-}
-
 \usepackage{soul}
 
 \RequirePackage[letterpaper,top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,includeheadfoot]{geometry} % geometry has to be BEFORE fancyhdr for margins to work!
@@ -87,8 +77,6 @@ import geometry;
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{pifont}
 \RequirePackage[T1]{fontenc}
-
-\input{fonts}
 
 % more generic formatitng
 
