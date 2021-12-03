@@ -19,6 +19,7 @@ import geometry;
 
 \definecolor{darkmidnightblue}{rgb}{0.57,0.0,0.04}
 \definecolor{sangria}{rgb}{0.0, 0.2, 0.4}
+\definecolor{lightsangria}{rgb}{247, 252, 255}
 \definecolor{persianblue}{RGB}{128, 0, 0}
 
 
@@ -234,6 +235,19 @@ bottomline=false,
 rightline=false,
 leftline=true]{note}{Comment}
 
+\newmdtheoremenv[
+backgroundcolor=lightcyan,
+nobreak=true,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=sangria,
+linewidth=1.2pt,
+topline=true,
+bottomline=true,
+rightline=true,
+leftline=true]{emptybox}{}
+
 
 \def\endlem{\hfill$\square$}
 \def\endsol{\hfill$\blacksquare$}
@@ -242,6 +256,8 @@ leftline=true]{note}{Comment}
 \newcommand\sym{\text{sym}}
 \newcommand\cycsum{\sum_\cyc}
 \newcommand\symsum{\sum_\sym}
+\newcommand\logor{\;||\;}
+\newcommand\logand{\;\&\&\;}
 
 
 \newcommand*{\Item}{\item[\ding{117}]} 
