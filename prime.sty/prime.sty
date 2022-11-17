@@ -17,25 +17,22 @@ import geometry;
 
 \RequirePackage{xcolor}
 
+% text colors
 \definecolor{darkmidnightblue}{rgb}{0.57,0.0,0.04}
 \definecolor{sangria}{rgb}{0.0, 0.2, 0.4}
 \definecolor{lightsangria}{rgb}{247, 252, 255}
-\definecolor{persianblue}{RGB}{128, 0, 0}
+\definecolor{persianblue}{RGB}{128, 0, 0} 
 
+%bkg colors
 
-\definecolor{titlered}{RGB}{128, 0.0, 0.0}
-
-\definecolor{thmblue}{rgb}{0.88, 0.95, 0.98}
-\definecolor{darkblue}{RGB}{36,57,108}
-
+\definecolor{lightrose}{RGB}{255, 247, 253}
+\definecolor{darkrose}{RGB}{112, 3, 78}
 
 \definecolor{lightred}{RGB}{255, 250, 250} 
-\definecolor{medred}{RGB}{255, 240, 240}
 \definecolor{darkred}{RGB}{143, 36, 29} 
 
 \definecolor{lightorange}{RGB}{255, 253, 247} 
-\definecolor{medorange}{RGB}{255, 249, 230}
-\definecolor{darkorange}{RGB}{181, 135, 47} 
+\definecolor{darkorange}{RGB}{219, 158, 39} 
 
 \definecolor{lightgreen}{RGB}{247, 255, 248} 
 \definecolor{medgreen}{RGB}{230, 255, 233}
@@ -51,10 +48,7 @@ import geometry;
 \definecolor{lightpurple}{RGB}{247, 247, 255}
 \definecolor{darkpurple}{RGB}{45,0,90} 
 
-\definecolor{lightrose}{RGB}{255, 247, 253}
-\definecolor{darkrose}{RGB}{112, 3, 78}
-
-\definecolor{lightgray}{RGB}{237, 237, 237}
+\definecolor{lightgray}{RGB}{243, 243, 243}
 \definecolor{darkgray}{RGB}{36, 36, 36} 
 
 
@@ -113,16 +107,15 @@ import geometry;
 \tableofcontents}
 }
 
-\newtheoremstyle{proof}
-{0pt}
-{0pt}
+\newtheoremstyle{proof} % name
+{1pt} % space above
+{1pt}% below
+{} %body font (empty = default)
+{} %indent amount (empty = default)
+{\color{darkpurple}\sffamily\bfseries} % title font
+{.\\} 
+{0em}
 {}
-{}
-{\color{darkpurple}\sffamily\bfseries}
-{:}
-{1.5mm}
-{\thmname{#1}\thmnote{ #3}}
-
 
 \RequirePackage{mdframed}
 
@@ -133,46 +126,23 @@ import geometry;
 
 \RequirePackage{titlesec}
 
-%titling & sectioning from team.sty
-
 \newcommand{\sectioncolor}{sangria} % in case I need to change this for any reason
 
 \titleformat{\section}{\normalfont\Large\bfseries\sffamily}{\color{\sectioncolor}{\S\,\thesection}}{1em}{\color{\sectioncolor}}[\color{\sectioncolor}\rule{\linewidth}{0.6mm}]
 \titleformat{\subsection}{\normalfont\large\bfseries\sffamily}{\color{\sectioncolor}{\S\,\thesubsection}}{1em}{\color{\sectioncolor}}[\color{\sectioncolor}]
 \titleformat{\subsubsection}{\normalfont\bfseries\sffamily}{\color{\sectioncolor}{\S\,\thesubsubsection}}{1em}{\color{\sectioncolor}}[\color{\sectioncolor}]
 
+\theoremstyle{plain}
+
+\newtheorem{problem}{Problem}
 
 \theoremstyle{proof} %problem solution and remark environment (self explanatory)
 
-\newmdtheoremenv[
-backgroundcolor=lightpurple,
-nobreak=true,
-innertopmargin=5pt,
-innerleftmargin=7pt,
-innerrightmargin=7pt,
-linecolor=darkpurple,
-linewidth=1.2pt,
-topline=true,
-bottomline=true,
-rightline=true,
-leftline=true]{question}{Problem}
+% style plain: Theorem, Lemma, Corollary, Proposition, Conjecture, Criterion, Assertion
 
 \newmdtheoremenv[
-backgroundcolor=lightgreen,
-nobreak=true,
-innertopmargin=5pt,
-innerleftmargin=7pt,
-innerrightmargin=7pt,
-linecolor=darkgreenblue,
-linewidth=1.2pt,
-topline=true,
-bottomline=true,
-rightline=true,
-leftline=true]{theorem}{Theorem}
-
-\newmdtheoremenv[
-backgroundcolor=lightred,
-nobreak=true,
+backgroundcolor=lightrose,
+nobreak=false,
 innertopmargin=5pt,
 innerleftmargin=7pt,
 innerrightmargin=7pt,
@@ -181,42 +151,85 @@ linewidth=1.2pt,
 topline=true,
 bottomline=true,
 rightline=true,
+leftline=true]{theorem}{Theorem}
+
+\newmdtheoremenv[
+backgroundcolor=lightred,
+nobreak=false,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkred,
+linewidth=1.2pt,
+topline=true,
+bottomline=true,
+rightline=true,
+leftline=true]{corollary}{Corollary}
+
+% style definition: Definition, Condition, Problem, Example, Exercise, Algorithm, Question, Axiom, Property, Assumption, Hypothesis
+
+\newmdtheoremenv[
+backgroundcolor=lightgreen,
+nobreak=false,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkgreen,
+linewidth=1.2pt,
+topline=true,
+bottomline=true,
+rightline=true,
+leftline=true]{example}{Example}
+
+\newmdtheoremenv[
+backgroundcolor=lightgreenblue,
+nobreak=false,
+innertopmargin=5pt,
+innerleftmargin=7pt,
+innerrightmargin=7pt,
+linecolor=darkgreenblue,
+linewidth=1.2pt,
+topline=true,
+bottomline=true,
+rightline=true,
 leftline=true]{definition}{Definition}
 
 \newmdtheoremenv[
-backgroundcolor=lightcyan,
-nobreak=true,
+backgroundcolor=lightpurple,
+nobreak=false,
 innertopmargin=5pt,
 innerleftmargin=7pt,
 innerrightmargin=7pt,
-linecolor=darkcyan,
-linewidth=2pt,
-topline=false,
-bottomline=false,
-rightline=false,
-leftline=true]{solution}{Solution}
+linecolor=darkpurple,
+linewidth=1.2pt,
+topline=true,
+bottomline=true,
+rightline=true,
+leftline=true]{idea}{Idea}
+
+% style remark: Remark, Note, Notation, Claim, Summary, Acknowledgment, Case, Conclusion
 
 \newmdtheoremenv[
-backgroundcolor=medcyan,
-nobreak=true,
+backgroundcolor=lightorange,
+nobreak=false,
 innertopmargin=5pt,
 innerleftmargin=7pt,
 innerrightmargin=7pt,
-linecolor=darkcyan,
-linewidth=2pt,
+linecolor=darkorange,
+linewidth=2.2pt,
 topline=false,
 bottomline=false,
 rightline=false,
 leftline=true]{lemma}{Lemma}
 
 \newmdtheoremenv[
-backgroundcolor=medcyan,
-nobreak=true,
+backgroundcolor=lightcyan,
+nobreak=false,
 innertopmargin=5pt,
 innerleftmargin=7pt,
 innerrightmargin=7pt,
 linecolor=darkcyan,
-linewidth=2pt,
+linewidth=2.2pt,
 topline=false,
 bottomline=false,
 rightline=false,
@@ -224,43 +237,38 @@ leftline=true]{claim}{Claim}
 
 \newmdtheoremenv[
 backgroundcolor=lightgray,
-nobreak=true,
+nobreak=false,
 innertopmargin=5pt,
 innerleftmargin=7pt,
 innerrightmargin=7pt,
 linecolor=darkgray,
-linewidth=2pt,
+linewidth=2.2pt,
 topline=false,
 bottomline=false,
 rightline=false,
-leftline=true]{note}{Comment}
+leftline=true]{remark}{Remark}
 
 \newmdtheoremenv[
-backgroundcolor=lightcyan,
-nobreak=true,
+backgroundcolor=lightgray,
+nobreak=false,
 innertopmargin=5pt,
 innerleftmargin=7pt,
 innerrightmargin=7pt,
-linecolor=sangria,
-linewidth=1.2pt,
-topline=true,
-bottomline=true,
-rightline=true,
-leftline=true]{emptybox}{}
+linecolor=darkgray,
+linewidth=2.2pt,
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=true]{reference}{Reference}
+
+
+\newenvironment{solution}
+  {\begin{proof}[Solution]}
+  {\end{proof}} % duplicating proof to solution
 
 
 \def\endlem{\hfill$\square$}
 \def\endsol{\hfill$\blacksquare$}
-
-\newcommand\cyc{\text{cyc}}
-\newcommand\sym{\text{sym}}
-\newcommand\cycsum{\sum_\cyc}
-\newcommand\symsum{\sum_\sym}
-\newcommand\logor{\;||\;}
-\newcommand\logand{\;\&\&\;}
-
-
-\newcommand*{\Item}{\item[\ding{117}]} 
 
 \newcommand{\bbold}[1]{{\color{sangria}\bfseries#1}} %blueish bold color
 \newcommand{\rbold}[1]{{\color{persianblue}\bfseries#1}} %reddish bold color
