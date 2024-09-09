@@ -1,1 +1,1 @@
-# nprime
+# prime.sty
